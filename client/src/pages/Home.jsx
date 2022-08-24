@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar"
 import Categories from "../components/Categories"
 import Products from "../components/Products"
+import Newsletter from "../components/Newsletter"
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
         <Navbar/>
         <Categories/>
         <Products/>
+        <Newsletter/>
     </div>
   )
 }
