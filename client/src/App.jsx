@@ -9,11 +9,11 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  // Navigate
 } from "react-router-dom";
 
 const App = () => {
-  const user = true;
+  // const user = true;
   return (
   <Router>
     <Routes>
@@ -21,13 +21,13 @@ const App = () => {
       <Route path="/products/:category" element={<ProductList/>}/>
       <Route path="/products/:id" element={<Product/>}></Route>
       <Route path="/WishList" element={<WishList/>}/>
-      <Route path="/login" element=
-      {user ?
+      <Route path="/login" element={<Login/>}/>
+      {/* {user ?
         (<Navigate replace to={"/"}/>) 
         : 
         (<Login/>)
       }
-      />
+      /> */}
       <Route path="/register" element={<Register/>}/>
     </Routes>
   </Router>

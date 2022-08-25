@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter';
@@ -28,15 +29,17 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
-  return (
+    const location = useLocation();
+    const cat = location.pathname.split("/")[2];
+    return (    
     <Container>
         <Navbar/>
-        <Title>Sublet</Title>
+        <Title>{cat}</Title>
         <FilterContainer>
             <Filter>
                 <FilterText>Filter Products:</FilterText>
                 <Select>
-                    <Option disabled selected>
+                    <Option disabled>
                         Room number
                     </Option>
                     <Option>1</Option>
@@ -45,7 +48,7 @@ const ProductList = () => {
                     <Option>4</Option>
                 </Select>
                 <Select>
-                    <Option disabled selected>
+                    <Option disabled>
                         Garden
                     </Option>
                     <Option>Yes</Option>
@@ -55,7 +58,7 @@ const ProductList = () => {
             <Filter>
                 <FilterText>Sort Products:</FilterText>
                 <Select>
-                    <Option disabled selected>
+                    <Option disabled>
                          Newest
                     </Option>
                     <Option>Price</Option>
