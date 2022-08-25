@@ -66,7 +66,7 @@ const ProductList = () => {
                 </Select>
             </Filter>
         </FilterContainer>
-        <Products/>
+        <Products cat={cat}/>
         <Newsletter/>
     </Container>
   )
