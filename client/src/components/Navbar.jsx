@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components"; 
 import { FavoriteOutlined, Search } from "@material-ui/icons";
 import { Badge } from '@material-ui/core';
-
+import { Link } from "react-router-dom";
 const Container = styled.div`
   height: 60px;
 `;
@@ -74,13 +74,19 @@ const Navbar = () => {
                 </Logo>
             </Center>
             <Right>
-                <MenuItem>REGISTER</MenuItem>
-                <MenuItem>LOGIN</MenuItem>
-                <MenuItem>
-                    <Badge badgeContent={4} color="primary">
-                       <FavoriteOutlined />
-                    </Badge>
-                </MenuItem>
+                <Link to={`/Register`}>
+                  <MenuItem>REGISTER</MenuItem>
+                </Link>
+                <Link to={`/Login`}>
+                  <MenuItem>LOGIN</MenuItem>
+                </Link>
+                <Link to={`WishList`}>
+                  <MenuItem>
+                      <Badge badgeContent={4} color="primary">
+                        <FavoriteOutlined />
+                      </Badge>
+                  </MenuItem>
+                </Link>
             </Right>
         </Wrapper>
     </Container>
