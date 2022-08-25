@@ -28,7 +28,6 @@ const Products = ({ cat, filters, sort }) => {
     getProducts();
   }, [cat]);
   
-  console.log(products)
   return (
     <Container>
       {products.map((item) => <Product item={item} key={item.id} />)}

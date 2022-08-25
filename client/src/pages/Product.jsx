@@ -1,6 +1,9 @@
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Container = styled.div``;
 
@@ -57,23 +60,32 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+
+  useEffect(() =>{
+    const getProduct = async () => {
+      try{
+        const res = await axios.get(`http://localhost:5000/api/products/find/` + id);
+        setProduct(res.data);
+      } catch {}
+      };
+      getProduct();
+      }, [id]);
+
   return (
     <Container>
       <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}
           </Desc>
-          <Price>$ 20</Price>
+          <Price>{product.price}</Price>
           <AddContainer>
             <Button>Save it</Button>
           </AddContainer>
