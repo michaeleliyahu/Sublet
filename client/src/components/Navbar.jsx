@@ -80,7 +80,7 @@ const Navbar = () => {
                 <Link to={`/Login`}>
                   <MenuItem>LOGIN</MenuItem>
                 </Link>
-                <Link to={`WishList`}>
+                <Link to={`/WishList`}>
                   <MenuItem>
                       <Badge badgeContent={4} color="primary">
                         <FavoriteOutlined />
