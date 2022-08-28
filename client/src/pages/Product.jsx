@@ -4,6 +4,9 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+
 
 const Container = styled.div``;
 
@@ -63,7 +66,9 @@ const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
-
+  const [quantity] = useState({});
+  const dispatch = useDispatch();
+ 
   useEffect(() =>{
     const getProduct = async () => {
       try{
@@ -72,8 +77,10 @@ const Product = () => {
       } catch {}
       };
       getProduct();
-      }, [id]);
-
+  }, [id]);
+  const HandleClick = ()=>{
+    dispatch(addProduct({product,quantity}));
+  };
   return (
     <Container>
       <Navbar />
@@ -87,7 +94,7 @@ const Product = () => {
           </Desc>
           <Price>{product.price}</Price>
           <AddContainer>
-            <Button>Save it</Button>
+            <Button onClick={HandleClick}>Save it</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
