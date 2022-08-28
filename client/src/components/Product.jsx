@@ -1,7 +1,10 @@
 import { FavoriteBorderOutlined, SearchOutlined } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../redux/cartRedux';
 
 const Info = styled.div`
   opacity: 0;
@@ -63,6 +66,21 @@ const Icon = styled.div`
   }
 `;
 const Product = ({item}) => {
+  const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const getProduct = async ()=>{
+      try{
+        const res = await axios.get(`http://localhost:5000/api/products/find/${item._id}`);
+        setProduct(res.data);
+      }catch{}
+    };
+    getProduct();
+  });
+  const HandleClick = ()=>{
+    dispatch(addProduct({ ...product}));
+  };
   return (
     <Container>
       <Circle />
@@ -73,7 +91,7 @@ const Product = ({item}) => {
           <SearchOutlined />
           </Link>
         </Icon>
-        <Icon>
+        <Icon onClick={HandleClick}>
             <FavoriteBorderOutlined />
         </Icon>
     </Info>  
