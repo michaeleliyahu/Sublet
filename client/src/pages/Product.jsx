@@ -79,7 +79,7 @@ const Product = () => {
       getProduct();
   }, [id]);
   const HandleClick = ()=>{
-    dispatch(addProduct({product,quantity}));
+    dispatch(addProduct({ ...product,quantity}));
   };
   return (
     <Container>
