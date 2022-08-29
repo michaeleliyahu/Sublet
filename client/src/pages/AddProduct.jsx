@@ -35,6 +35,11 @@ const FillTextDesc = styled.div`
     width: 400px;
     border: 1px solid lightgray;
 `
+const FillTextPrice = styled.div`
+    height: 50px;
+    width: 200px;
+    border: 1px solid lightgray;
+`
 const Title = styled.div`
     font-size: 20px;
     font-weight: bold;
@@ -46,16 +51,28 @@ const DescBox = styled.div`
     margin: 40px;
 `  
 const Filter = styled.div`
+    padding: 15px;
 `;
 
 const Select = styled.select`
-  padding: 10px;
-  margin-right: 20px;
+    margin: 40px;
+    display: flex;  
+    padding: 10px;
+    width: 50;
+    
 `;
 const WrapBox = styled.div`
 
 `
-
+const Button = styled.button`
+    height: 50px;
+    width: 50;
+    border: none;
+    padding: 15px 20px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+`;
 const Option = styled.option``;
 const AddProduct = () => {
   return (
@@ -81,37 +98,36 @@ const AddProduct = () => {
                 </WrapBox>
                 <Filter>
                     <Select>
-                        <Option disabled>
-                            Room number
-                        </Option>
+                        <Option disabled selected>Room Number</Option>
                         <Option>1</Option>
                         <Option>2</Option>
                         <Option>3</Option>
                         <Option>4</Option>
                     </Select>
                     <Select>
-                        <Option disabled>
-                            Garden
-                        </Option>
+                        <Option disabled selected>Garden</Option>
                         <Option>Yes</Option>
                         <Option>No</Option>
                     </Select>
                     <Select>
-                        <Option disabled>
-                            sublet/rent
-                        </Option>
+                        <Option disabled selected>Category</Option>
                         <Option>sublet</Option>
                         <Option>rent</Option>
                         <Option>all</Option>
                     </Select>
                     <Select>
-                        <Option disabled>
-                        inStock
-                        </Option>
+                        <Option disabled selected>In stock</Option>
                         <Option>Yes</Option>
                         <Option>No</Option>
                     </Select>
                 </Filter>
+                <TitleBox>                   
+                        <Title>Price</Title>
+                        <FillTextPrice>
+                            <Input/>
+                        </FillTextPrice>
+                </TitleBox>
+                <Button>CREATE</Button>
             </Wrapper>
         <Newsletter/>
     </Container>
