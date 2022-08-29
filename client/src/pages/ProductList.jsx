@@ -1,5 +1,6 @@
+import {AddBoxOutlined } from '@material-ui/icons';
 import React from 'react'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter';
@@ -27,7 +28,13 @@ const Select = styled.select`
   margin-right: 20px;
 `;
 const Option = styled.option``;
-
+const AddProdect = styled.div`
+align-items: center;
+display: flex;
+justify-content: center;
+height: 200px;
+font-size: 14px;
+`;
 const ProductList = () => {
     const location = useLocation();
     const cat = location.pathname.split("/")[2];
@@ -67,6 +74,11 @@ const ProductList = () => {
             </Filter>
         </FilterContainer>
         <Products cat={cat}/>
+        <Link to={`/AddProdect`}>
+            <AddProdect>
+                <AddBoxOutlined/>
+            </AddProdect>
+        </Link>
         <Newsletter/>
     </Container>
   )
