@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../redux/apiCalls';
+import { Navigate } from 'react-router-dom';
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -91,7 +92,11 @@ const Register = () => {
                     data in accordance with the <b>PRIVACY POLICY</b>
                 </Agreement>
                 <Button onClick={handleClick} disabled={isFetching}>CREATE</Button>
-                {error && <Error>Something went wrong...</Error>}
+                {isFetching ? 
+                (<Navigate replace to={"/"}/>) 
+                : 
+                (error && <Error>Something went wrong...</Error>)}
+                
             </Form>
         </Wrapper>
     </Container>
