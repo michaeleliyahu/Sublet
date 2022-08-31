@@ -1,8 +1,9 @@
 import { AddAPhotoOutlined } from '@material-ui/icons'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
+import { addProduct } from '../redux/apiCalls'
 
 const Container = styled.div``
 const Wrapper = styled.div`
@@ -75,6 +76,16 @@ const Button = styled.button`
 `;
 const Option = styled.option``;
 const AddProduct = () => {
+    const [title, setTitle] = useState("")
+    const [desc, setDesc] = useState("")
+    const [categories, setCategories] = useState("")
+    const [size, setSize] = useState("")
+    const [price, setPrice] = useState("")
+    
+    const handleClick = (e) => {
+        e.preventDefault()
+        addProduct({title,desc,categories,size,price});
+    };
   return (
     <Container>
         <Navbar/>
@@ -86,36 +97,40 @@ const AddProduct = () => {
                     <TitleBox>                   
                         <Title>Title</Title>
                         <FillTextTitle>
-                            <Input/>
+                            <Input
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
                         </FillTextTitle>
                     </TitleBox>
                     <DescBox>
                         <Title>Description</Title>
                         <FillTextDesc>
-                            <Input/>
+                            <Input
+                                onChange={(e) => setDesc(e.target.value)}
+                            />
                         </FillTextDesc> 
                     </DescBox>
                 </WrapBox>
                 <Filter>
-                    <Select>
+                    <Select onChange={(e) => setSize(e.target.value)}>
                         <Option disabled selected>Room Number</Option>
                         <Option>1</Option>
                         <Option>2</Option>
                         <Option>3</Option>
                         <Option>4</Option>
                     </Select>
-                    <Select>
+                    <Select >
                         <Option disabled selected>Garden</Option>
                         <Option>Yes</Option>
                         <Option>No</Option>
                     </Select>
-                    <Select>
+                    <Select onChange={(e) => setCategories(e.target.value)}>
                         <Option disabled selected>Category</Option>
                         <Option>sublet</Option>
                         <Option>rent</Option>
                         <Option>all</Option>
                     </Select>
-                    <Select>
+                    <Select >
                         <Option disabled selected>In stock</Option>
                         <Option>Yes</Option>
                         <Option>No</Option>
@@ -124,10 +139,12 @@ const AddProduct = () => {
                 <TitleBox>                   
                         <Title>Price</Title>
                         <FillTextPrice>
-                            <Input/>
+                            <Input
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
                         </FillTextPrice>
                 </TitleBox>
-                <Button>CREATE</Button>
+                <Button onClick={handleClick}>CREATE</Button>
             </Wrapper>
         <Newsletter/>
     </Container>

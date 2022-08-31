@@ -22,3 +22,10 @@ export const register = async (dispatch,newUser) => {
     dispatch(registerFailure());
   }
 };
+
+export const addProduct = async (newUser) => {
+  try {
+     await publicRequest.post("/products", newUser);
+  } catch (err) {
+  }
+};
