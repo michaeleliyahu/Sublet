@@ -1,20 +1,20 @@
 export const categories = [
     {
       id: 1,
-      img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "SHIRT STYLE!",
+      img: "https://cdn.vox-cdn.com/thumbor/YJM-8Mge-5UVy0i8RRCsIt8-oCU=/0x0:1800x1168/920x613/filters:focal(733x429:1021x717):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/63048549/logan_apartments.6.jpg",
+      title: "SUBLET",
       cat:"Sublet"
     },
     {
       id: 2,
-      img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      title: "LOUNGEWEAR LOVE",
+      img: "https://www.habitat.co.il/sites/default/files/styles/auto_crop/public/images/products/1924/dsc8906aaacopy.jpg?itok=PMpitXJz",
+      title: "RENT",
       cat:"Rent"
     },
     {
       id: 3,
-      img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      title: "LIGHT JACKETS",
+      img: "https://www.udr.com/globalassets/corporate/homepage/homepage_2_essexluxe.jpg",
+      title: "ALL",
       cat:"All"
     },
   ];
