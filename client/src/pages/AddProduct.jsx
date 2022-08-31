@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 import Newsletter from '../components/Newsletter'
 import { addProduct } from '../redux/apiCalls'
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom'
 
 const Container = styled.div``
 const Wrapper = styled.div`
@@ -74,6 +76,9 @@ const Button = styled.button`
     color: white;
     cursor: pointer;
 `;
+const Error = styled.span`
+  color: red;
+`;
 const Option = styled.option``;
 const AddProduct = () => {
     const [title, setTitle] = useState("")
@@ -81,10 +86,12 @@ const AddProduct = () => {
     const [categories, setCategories] = useState("")
     const [size, setSize] = useState("")
     const [price, setPrice] = useState("")
-    
+    const {isFetching, error} = useSelector((state) => state.newProduct);
+
+    const dispatch = useDispatch();
     const handleClick = (e) => {
         e.preventDefault()
-        addProduct({title,desc,categories,size,price});
+        addProduct(dispatch, {title,desc,categories,size,price});
     };
   return (
     <Container>
@@ -126,9 +133,9 @@ const AddProduct = () => {
                     </Select>
                     <Select onChange={(e) => setCategories(e.target.value)}>
                         <Option disabled selected>Category</Option>
-                        <Option>sublet</Option>
-                        <Option>rent</Option>
-                        <Option>all</Option>
+                        <Option>Sublet</Option>
+                        <Option>Rent</Option>
+                        <Option>All</Option>
                     </Select>
                     <Select >
                         <Option disabled selected>In stock</Option>
@@ -144,7 +151,13 @@ const AddProduct = () => {
                             />
                         </FillTextPrice>
                 </TitleBox>
-                <Button onClick={handleClick}>CREATE</Button>
+                <Button onClick={handleClick} dispatch={isFetching}>CREATE</Button>
+                {isFetching?
+                (<Navigate replace to={`/products/${categories}`}/>)
+                :
+                (error && <Error>Something went wrong...</Error>)
+
+                }
             </Wrapper>
         <Newsletter/>
     </Container>
